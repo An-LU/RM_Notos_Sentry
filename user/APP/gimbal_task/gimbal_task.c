@@ -114,8 +114,8 @@ static void Gimbal_Send_Voltage(void)
 		else
 		{
 			//CAN_CMD_GIMBAL(0, Pitch_Can_Set_Voltage, Shoot_Can_Set_Voltage, 0);
-			//CAN_CMD_GIMBAL(Yaw_Can_Set_Voltage, Pitch_Can_Set_Voltage, Shoot_Can_Set_Voltage, 0);
-			CAN_CMD_GIMBAL(0, 0, 0, 0);
+			CAN_CMD_GIMBAL(Yaw_Can_Set_Voltage, Pitch_Can_Set_Voltage, Shoot_Can_Set_Voltage, 0);
+			//CAN_CMD_GIMBAL(0, 0, 0, 0);
 		}
 	}
 }
@@ -257,11 +257,11 @@ static void Gimbal_Updata(void)
 	gimbal_info.pitch_motor.angle = relative_angle_change(gimbal_info.pitch_motor.ecd_last, gimbal_info.pitch_motor.ecd_now, 
 											PITCH_ECD_DEL, &gimbal_info.pitch_motor.turn_table_flag, PITCH_ECD_TURN);
 	gimbal_info.yaw_motor.angle = relative_angle_change( gimbal_info.yaw_motor.ecd_last, gimbal_info.yaw_motor.ecd_now, 
-											YAW_ECD_DEL, &gimbal_info.yaw_motor.turn_table_flag, YAW_ECD_TURN) + gimbal_info.turn_circle_num * 2 * PI;
+											YAW_ECD_DEL, &gimbal_info.yaw_motor.turn_table_flag, YAW_ECD_TURN);// + gimbal_info.turn_circle_num * 2 * PI;
 	gimbal_info.pitch_motor.ecd_last = gimbal_info.pitch_motor.ecd_now;
 	gimbal_info.yaw_motor.ecd_last = gimbal_info.yaw_motor.ecd_now;
 	//计算yaw轴电机圈数
-	calc_turn_angle(&gimbal_info.yaw_motor.angle_last, &gimbal_info.yaw_motor.angle);
+	//calc_turn_angle(&gimbal_info.yaw_motor.angle_last, &gimbal_info.yaw_motor.angle);
 	//角速度更新  内环
 	//gimbal_info.pitch_motor.speed = *(gimbal_INT_gyro_point + INS_PITCH_ADDRESS_OFFSET);		//陀螺仪能够跟随云台pitch轴
 	gimbal_info.pitch_motor.speed = gimbal_info.pitch_motor.gimbal_motor_measure->speed_rpm * Ecd_to_Rad;	//否则则用电机反馈的转速值rmp
@@ -461,14 +461,14 @@ static void Angle_Limit(void)
 	{
 		gimbal_info.pitch_motor.angle_set = gimbal_info.pitch_motor.angle_min;
 	}
-//	if( gimbal_info.yaw_motor.angle_set > gimbal_info.yaw_motor.angle_max )
-//	{
-//		gimbal_info.yaw_motor.angle_set = gimbal_info.yaw_motor.angle_max;
-//	}
-//	else if( gimbal_info.yaw_motor.angle_set < gimbal_info.yaw_motor.angle_min )
-//	{
-//		gimbal_info.yaw_motor.angle_set = gimbal_info.yaw_motor.angle_min;
-//	}
+	if( gimbal_info.yaw_motor.angle_set > gimbal_info.yaw_motor.angle_max )
+	{
+		gimbal_info.yaw_motor.angle_set = gimbal_info.yaw_motor.angle_max;
+	}
+	else if( gimbal_info.yaw_motor.angle_set < gimbal_info.yaw_motor.angle_min )
+	{
+		gimbal_info.yaw_motor.angle_set = gimbal_info.yaw_motor.angle_min;
+	}
 }
 
 //static void Angle_Format_PI(fp32 *angle, fp32 *last_angle)

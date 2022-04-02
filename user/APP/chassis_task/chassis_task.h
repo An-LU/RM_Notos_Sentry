@@ -22,7 +22,7 @@
 #define CHASSIS_CONTROL_TIME_MS 2
 //底盘任务控制间隔 0.002s
 #define CHASSIS_CONTROL_TIME 0.002
-//在速度更新使用		底盘任务控制频率，尚未使用这个宏
+//在速度更新使用		底盘任务控制频率
 #define CHASSIS_CONTROL_FREQUENCE 500.0f
 //底盘3508最大can发送电流值
 #define MAX_M3508_CAN_CURRENT 16000.0f

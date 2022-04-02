@@ -28,10 +28,10 @@ void Chassis_Relax_mode(void);
 void Chassis_Auto_mode(void);
 void Chassis_Rc_mode(void);
 
-void Chassis_mode_set(void);
+static void Chassis_mode_set(void);
 void Chassis_Init(void);
 void Chassis_Updata(void);
-void Chassis_Control(void);
+static void Chassis_Control(void);
 void Chassis_Send_Current(void);
 
 void chassis_auto_patrol(void);
@@ -103,7 +103,7 @@ void Chassis_PID_Init(void)
 	PID_Init(&chassis_info.chassis_speed_pid, PID_POSITION, motor_speed_pid, M3505_MOTOR_SPEED_PID_MAX_OUT, M3505_MOTOR_SPEED_PID_MAX_IOUT);
 }
 
-void Chassis_mode_set(void)
+static void Chassis_mode_set(void)
 {
 	//遥控器设置底盘模式
 	//当遥控器离线的时候，为AUTO模式
@@ -136,7 +136,7 @@ void Chassis_Updata(void)
 	//更新底盘速度
 	chassis_info.chassis_speed = chassis_info.chassis_motor.chassis_motor_measure->speed_rpm * CHASSIS_MOTOR_RPM_TO_VECTOR_SEN;
 }
-void Chassis_Control(void)
+static void Chassis_Control(void)
 {
 	//选择控制量输入
 	switch(chassis_info.chassis_mode)

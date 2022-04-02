@@ -27,38 +27,14 @@ Project File Date:  03/24/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil v5\ARM\ARMCC\Bin'
 Build target 'standard'
-compiling miniPC.c...
-..\user\APP\miniPC\miniPC.c(152): warning:  #177-D: variable "a"  was declared but never referenced
-  	uint8_t a = sizeof(stm32_info);
-..\user\APP\miniPC\miniPC.c: 1 warning, 0 errors
-compiling start_task.c...
-..\user\APP\start_task\start_task.c(57): warning:  #177-D: variable "DetectTask_Handler"  was declared but never referenced
-  static TaskHandle_t DetectTask_Handler;
-..\user\APP\start_task\start_task.c: 1 warning, 0 errors
-compiling calibrate_task.c...
-..\user\APP\calibrate_task\calibrate_task.c(358): warning:  #177-D: variable "local_cali_t"  was declared but never referenced
-      gimbal_cali_t *local_cali_t = (gimbal_cali_t *)cali;
-..\user\APP\calibrate_task\calibrate_task.c: 1 warning, 0 errors
 compiling gimbal_task.c...
-..\user\APP\gimbal_task\gimbal_task.c(35): warning:  #550-D: variable "Yaw_Can_Set_Voltage"  was set but never used
-  static int16_t Yaw_Can_Set_Voltage = 0, Pitch_Can_Set_Voltage = 0, Shoot_Can_Set_Voltage = 0;
-..\user\APP\gimbal_task\gimbal_task.c(35): warning:  #550-D: variable "Pitch_Can_Set_Voltage"  was set but never used
-  static int16_t Yaw_Can_Set_Voltage = 0, Pitch_Can_Set_Voltage = 0, Shoot_Can_Set_Voltage = 0;
-..\user\APP\gimbal_task\gimbal_task.c(35): warning:  #550-D: variable "Shoot_Can_Set_Voltage"  was set but never used
-  static int16_t Yaw_Can_Set_Voltage = 0, Pitch_Can_Set_Voltage = 0, Shoot_Can_Set_Voltage = 0;
-..\user\APP\gimbal_task\gimbal_task.c: 3 warnings, 0 errors
-compiling chassis_task.c...
-compiling user_task.c...
-..\user\APP\user_task\user_task.c(53): warning:  #550-D: variable "yaw_mode"  was set but never used
-  	const motor_measure_t *yaw_mode;
-..\user\APP\user_task\user_task.c(58): warning:  #550-D: variable "moto_accel"  was set but never used
-  	float moto_speed,moto_accel;
-..\user\APP\user_task\user_task.c: 2 warnings, 0 errors
-compiling shoot.c...
+..\user\APP\gimbal_task\gimbal_task.c(230): warning:  #177-D: function "calc_turn_angle"  was declared but never referenced
+  static void calc_turn_angle(fp32 *angle_last, fp32 *angle_now)
+..\user\APP\gimbal_task\gimbal_task.c: 1 warning, 0 errors
 linking...
-Program Size: Code=44528 RO-data=3532 RW-data=512 ZI-data=135400  
+Program Size: Code=44436 RO-data=3532 RW-data=512 ZI-data=135400  
 FromELF: creating hex file...
-".\Objects\infantry.axf" - 0 Error(s), 8 Warning(s).
+".\Objects\infantry.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -71,7 +47,7 @@ Package Vendor: Keil
   D:\Keil v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:11
+Build Time Elapsed:  00:00:03
 </pre>
 </body>
 </html>
