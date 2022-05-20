@@ -27,14 +27,32 @@ Project File Date:  03/24/2022
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 7 (build 960)', folder: 'D:\Keil v5\ARM\ARMCC\Bin'
 Build target 'standard'
+compiling miniPC.c...
+compiling start_task.c...
+..\user\APP\start_task\start_task.c(33): warning:  #177-D: variable "INSTask_Handler"  was declared but never referenced
+  static TaskHandle_t INSTask_Handler;
+..\user\APP\start_task\start_task.c(53): warning:  #177-D: variable "CalibrateTask_Handler"  was declared but never referenced
+  static TaskHandle_t CalibrateTask_Handler;
+..\user\APP\start_task\start_task.c(57): warning:  #177-D: variable "DetectTask_Handler"  was declared but never referenced
+  static TaskHandle_t DetectTask_Handler;
+..\user\APP\start_task\start_task.c: 3 warnings, 0 errors
+compiling calibrate_task.c...
+..\user\APP\calibrate_task\calibrate_task.c(358): warning:  #177-D: variable "local_cali_t"  was declared but never referenced
+      gimbal_cali_t *local_cali_t = (gimbal_cali_t *)cali;
+..\user\APP\calibrate_task\calibrate_task.c: 1 warning, 0 errors
+compiling chassis_task.c...
 compiling gimbal_task.c...
-..\user\APP\gimbal_task\gimbal_task.c(230): warning:  #177-D: function "calc_turn_angle"  was declared but never referenced
-  static void calc_turn_angle(fp32 *angle_last, fp32 *angle_now)
-..\user\APP\gimbal_task\gimbal_task.c: 1 warning, 0 errors
+compiling user_task.c...
+..\user\APP\user_task\user_task.c(53): warning:  #550-D: variable "yaw_mode"  was set but never used
+  	const motor_measure_t *yaw_mode;
+..\user\APP\user_task\user_task.c(58): warning:  #550-D: variable "moto_accel"  was set but never used
+  	float moto_speed,moto_accel;
+..\user\APP\user_task\user_task.c: 2 warnings, 0 errors
+compiling INS_task.c...
 linking...
-Program Size: Code=44436 RO-data=3532 RW-data=512 ZI-data=135400  
+Program Size: Code=32800 RO-data=1352 RW-data=492 ZI-data=135396  
 FromELF: creating hex file...
-".\Objects\infantry.axf" - 0 Error(s), 1 Warning(s).
+".\Objects\infantry.axf" - 0 Error(s), 6 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -47,7 +65,7 @@ Package Vendor: Keil
   D:\Keil v5\ARM\PACK\Keil\STM32F4xx_DFP\2.15.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:12
 </pre>
 </body>
 </html>
